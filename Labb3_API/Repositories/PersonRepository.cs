@@ -31,6 +31,7 @@ namespace Labb3_API.Repositories
                             .Where(l => l.Interests.Any(i => i.Id == interest.Id)) // Filtrera länkarna för rätt intresse
                             .Select(l => new GetLinksFromPerson
                             {
+                                Name = l.Name,
                                 URL = l.Url,
                                 Description = l.Description
                             }).ToList()

@@ -29,6 +29,7 @@ namespace Labb3_API.Repositories
                     Links = i.Links.Select(l => new GetLinksFromInterest
                     {
                         Id = l.Id,
+                        Name = l.Name,
                         URL = l.Url,
                         Description = l.Description,
                     }).ToList()

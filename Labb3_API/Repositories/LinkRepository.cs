@@ -20,6 +20,7 @@ namespace Labb3_API.Repositories
                 .Select(l => new GetLinks
                 {
                     Id = l.Id,
+                    Name = l.Name,
                     Url = l.Url,
                     Description = l.Description,
                     Persons = l.Persons.Select(p => new GetPersonsFromLink

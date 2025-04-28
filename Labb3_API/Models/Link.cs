@@ -8,6 +8,10 @@ namespace Labb3_API.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(20, ErrorMessage = "Name name cannot be longer than 20 characters.")]
+        public string Name { get; set; }
+
+        [Required]
         [Url]
         public string Url { get; set; }
 

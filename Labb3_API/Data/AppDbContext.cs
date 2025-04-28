@@ -80,21 +80,21 @@ namespace Labb3_API.Data
 
             // Seed Links (utan FK till Person/Interest)
             modelBuilder.Entity<Link>().HasData(
-                new Link { Id = 1, Url = "https://www.cykling.se", Description = "Information om cykling. Hur man gör osv." },
-                new Link { Id = 2, Url = "https://www.cykelturer.se", Description = "Information om turer runtom i landet." },
-                new Link { Id = 3, Url = "https://www.bergsklattring.se", Description = "Information om bergsklättring." },
-                new Link { Id = 4, Url = "https://www.klattraberg.se", Description = "Information om alla faror kopplade till bergsklättring." },
-                new Link { Id = 5, Url = "https://www.ving.se", Description = "Hitta dina resor här." },
-                new Link { Id = 6, Url = "https://www.apollo.se", Description = "En till sida att hitta sina resor på." },
-                new Link { Id = 7, Url = "https://www.flygresor.se", Description = "Sök billiga flyg." },
-                new Link { Id = 8, Url = "https://www.meditation.se", Description = "Lär dig vila." },
-                new Link { Id = 9, Url = "https://www.fotboll.se", Description = "Allt om fotboll." },
-                new Link { Id = 10, Url = "https://www.matlagning.se", Description = "Bästa recepten online." },
-                new Link { Id = 11, Url = "https://www.astro.se", Description = "Lär dig fysik genom roliga experiment." },
-                new Link { Id = 12, Url = "https://www.konst.se", Description = "Se konst från hela världen." },
-                new Link { Id = 13, Url = "https://www.film.se", Description = "Streama filmer och tv-serier." },
-                new Link { Id = 14, Url = "https://www.github.com", Description = "Lägg upp dina projekt här." },
-                new Link { Id = 15, Url = "https://www.stackoverflow.com", Description = "Lär dig mer om programmering." }
+                new Link { Id = 1, Name = "Cykling.se", Url = "https://www.cykling.se", Description = "Information om cykling. Hur man gör osv." },
+                new Link { Id = 2, Name = "Cykelturer.se", Url = "https://www.cykelturer.se", Description = "Information om turer runtom i landet." },
+                new Link { Id = 3, Name = "Bergsklättring.se", Url = "https://www.bergsklattring.se", Description = "Information om bergsklättring." },
+                new Link { Id = 4, Name = "KlättraBerg.se", Url = "https://www.klattraberg.se", Description = "Information om alla faror kopplade till bergsklättring." },
+                new Link { Id = 5, Name = "Ving.se", Url = "https://www.ving.se", Description = "Hitta dina resor här." },
+                new Link { Id = 6, Name = "Apollo.se", Url = "https://www.apollo.se", Description = "En till sida att hitta sina resor på." },
+                new Link { Id = 7, Name = "Flygresor.se", Url = "https://www.flygresor.se", Description = "Sök billiga flyg." },
+                new Link { Id = 8, Name = "Meditation.se", Url = "https://www.meditation.se", Description = "Lär dig vila." },
+                new Link { Id = 9, Name = "Fotboll.se", Url = "https://www.fotboll.se", Description = "Allt om fotboll." },
+                new Link { Id = 10, Name = "Matlagning.se", Url = "https://www.matlagning.se", Description = "Bästa recepten online." },
+                new Link { Id = 11, Name = "Astro.se", Url = "https://www.astro.se", Description = "Lär dig fysik genom roliga experiment." },
+                new Link { Id = 12, Name = "Konst.se", Url = "https://www.konst.se", Description = "Se konst från hela världen." },
+                new Link { Id = 13, Name = "Film.se", Url = "https://www.film.se", Description = "Streama filmer och tv-serier." },
+                new Link { Id = 14, Name = "Github.com", Url = "https://www.github.com", Description = "Lägg upp dina projekt här." },
+                new Link { Id = 15, Name = "StackOverflow.com", Url = "https://www.stackoverflow.com", Description = "Lär dig mer om programmering." }
             );
 
             // Seed Many-to-Many: Person <-> Link

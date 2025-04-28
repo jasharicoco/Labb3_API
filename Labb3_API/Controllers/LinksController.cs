@@ -65,6 +65,7 @@ namespace Labb3_API.Controllers
             // Skapa ett nytt Link objekt och säkerställ att Interests och Persons är initialiserade
             var linkEntity = new Link
             {
+                Name = newLink.Name,
                 Url = newLink.URL,
                 Description = newLink.Description,
                 Interests = new List<Interest>(), // Initialisera Interests
@@ -103,6 +104,7 @@ namespace Labb3_API.Controllers
             // Skapa en DTO för att returnera länken
             var linkDto = new GetLinks
             {
+                Name = linkEntity.Name,
                 Url = linkEntity.Url,
                 Description = linkEntity.Description,
                 Persons = linkEntity.Persons.Select(p => new GetPersonsFromLink
