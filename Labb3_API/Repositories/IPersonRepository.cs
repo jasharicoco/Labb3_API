@@ -11,6 +11,12 @@ namespace Labb3_API.Repositories
 
         Task<Person> CreatePersonWithInterestsAndLinksAsync(AddPersonRequest newPerson);
 
+        Task<GetPersons> GetInterestsByPersonIdAsync(int personId);
+
+        Task<GetPersons> GetLinksByPersonIdAsync(int personId);
+
+        Task<(string PersonName, string InterestName)?> AddInterestToPersonWithConfirmationAsync(int personId, int interestId);
+
     }
 
 }

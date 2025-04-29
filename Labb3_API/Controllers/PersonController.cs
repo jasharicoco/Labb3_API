@@ -62,6 +62,35 @@ namespace Labb3_API.Controllers
             return Ok(new { message = $"{person.FirstName} {person.LastName} har tagits bort från databasen." });
         }
 
+        [HttpGet("{id}/interests")]
+        public async Task<IActionResult> GetInterestsForPerson(int id)
+        {
+            var interests = await _personRepository.GetInterestsByPersonIdAsync(id);
+            if (interests == null) return NotFound();
+            return Ok(interests);
+        }
+
+        [HttpGet("{id}/links")]
+        public async Task<IActionResult> GetLinksForPerson(int id)
+        {
+            var links = await _personRepository.GetLinksByPersonIdAsync(id);
+            if (links == null) return NotFound();
+            return Ok(links);
+        }
+
+        [HttpPut("{personId}/interest/{interestId}")]
+        public async Task<IActionResult> AddInterestToPerson(int personId, int interestId)
+        {
+            var result = await _personRepository.AddInterestToPersonWithConfirmationAsync(personId, interestId);
+
+            if (result == null)
+                return BadRequest("Personen eller intresset hittades ej - eller så är de redan kopplade.");
+
+            var (personName, interestName) = result.Value; // Dekonstruera tuple korrekt här
+
+            return Ok($"{interestName} har lagts till för {personName}");
+        }
+
     }
 
 }

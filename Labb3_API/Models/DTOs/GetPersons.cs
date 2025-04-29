@@ -19,5 +19,8 @@ namespace Labb3_API.Models.DTOs
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ICollection<GetInterestsFromPerson> Interests { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public ICollection<GetLinksFromPerson> Links { get; set; }
+
     }
 }

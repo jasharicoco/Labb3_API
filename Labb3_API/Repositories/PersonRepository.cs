@@ -138,6 +138,66 @@ namespace Labb3_API.Repositories
             return personEntity;
         }
 
+        public async Task<GetPersons> GetInterestsByPersonIdAsync(int personId)
+        {
+            return await _context.Persons
+                .Where(p => p.Id == personId)
+                .Select(p => new GetPersons
+                {
+                    Id = p.Id,
+                    Name = p.FirstName + " " + p.LastName,
+                    Interests = p.Interests.Select(i => new GetInterestsFromPerson
+                    {
+                        Name = i.InterestName,
+                        Description = i.Description,
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+        }
+
+
+        public async Task<GetPersons> GetLinksByPersonIdAsync(int personId)
+        {
+            return await _context.Persons
+                .Where(p => p.Id == personId)
+                .Select(p => new GetPersons
+                {
+                    Id = p.Id,
+                    Name = p.FirstName + " " + p.LastName,
+                    Links = p.Links.Select(l => new GetLinksFromPerson
+                    {
+                        Name = l.Name,
+                        URL = l.Url,
+                        Description = l.Description
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<(string PersonName, string InterestName)?> AddInterestToPersonWithConfirmationAsync(int personId, int interestId)
+        {
+            var person = await _context.Persons.Include(p => p.Interests)
+                                               .FirstOrDefaultAsync(p => p.Id == personId);
+            var interest = await _context.Interests.FindAsync(interestId);
+
+            if (person == null || interest == null) return null;
+
+            if (!person.Interests.Contains(interest))
+            {
+                person.Interests.Add(interest);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                return null;
+            }
+
+            var personName = $"{person.FirstName} {person.LastName}";
+            var interestName = interest.InterestName;
+
+            return (personName, interestName);
+        }
+
 
     }
 
